@@ -1,0 +1,28 @@
+name: Assignment CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm' # Caches npm dependencies to speed up workflows
+
+      - name: 24f1002212@ds.study.iitm.ac.in
+        run: echo "Hello, world! This step includes my email as required."
+
+      - name: Run a sample test
+        run: npm install && npm test
+        env:
+          CI: true
